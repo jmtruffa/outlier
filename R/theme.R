@@ -4,7 +4,7 @@
 #' agrega dos variables globales .pie y .paleta para poder ser usada en la construcción de gráficos
 #' @return objeto devuelto por theme_grey con las características de outlier
 
-theme_outlier = function (base_size = 11, base_family = "Microsoft Sans Serif") 
+theme_outlier <- function (base_size = 11, base_family = "Microsoft Sans Serif") 
 {
   .pie <<- "Outlier"
   .paleta <<- c("#FF6600", "#00003a", "#A6CAEC", "#F8CBAD", "#000000" )
@@ -47,9 +47,5 @@ theme_outlier = function (base_size = 11, base_family = "Microsoft Sans Serif")
       plot.subtitle = ggplot2::element_text(size = 16, hjust = 0, margin = ggplot2::margin(t = 0, r = 0, b = 3, l = 0, unit = "pt"), color="#FF6600"), 
       
       complete = FALSE,
-      
-
     )
-  
-  
 }

@@ -14,13 +14,48 @@
 #' @param breaks Los breaks que se van a usar. Por defecto se usa la función `bd_breaks` de la librería `bdscale`
 #' 
 #' @return Una escala x para fechas de negocios
-#' 
+#' @export
 scale_x_cont_dates = function (..., name = name, business.dates, max.major.breaks = 5, max.minor.breaks = max.major.breaks * 
     5, breaks = bd_breaks(business.dates)) 
-{
+{   
+    require(scales)
+    require(bdscale)
     scale_x_continuous(name = name, breaks = breaks(max.major.breaks), 
-        minor_breaks = breaks(max.minor.breaks), trans = bd_trans(business.dates, 
+        minor_breaks = breaks(max.minor.breaks), trans = outlier::bd_trans(business.dates, 
             breaks), ...)
 }
+
+
+#' 
+#' t2bd
+#' 
+#' @description No entiendo por qué tuve que buscar esta función y pegarla acá.
+#' La usa scale_x_cont_dates y por alguna razón no la encuentro exportada desde ahi
+#' Entonces la armé de vuelta para usarla
+#' @export
+t2bd = function (ts, business.dates) 
+{
+    require(scales)
+    require(bdscale)
+    result = business.dates[pmin(pmax(round(ts, 0), 0) + 1, length(business.dates))]
+    structure(result, class = "Date")
+}
+
+#'
+#'  bd_trans
+#' 
+#' @description Idem anterior
+#' @export
+bd_trans = function (business.dates, breaks = bd_breaks(business.dates)) 
+{
+    require(scales)
+    require(bdscale)
+    transform <- function(dates) bd2t(dates, business.dates)
+    inverse <- function(ts) t2bd(ts, business.dates)
+    trans_new("date", transform = transform, inverse = inverse, 
+        breaks = breaks, domain = range(business.dates))
+}
+
+
 
 

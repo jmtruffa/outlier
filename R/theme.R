@@ -7,7 +7,7 @@
 theme_outlier <- function (base_size = 11, base_family = "Microsoft Sans Serif") 
 {
   .pie <<- "Outlier"
-  .paleta <<- c("#FF6600", "#00003a", "#A6CAEC", "#F8CBAD", "#000000" )
+  .paleta <<- c("#FF6600", "#00003a", "#A6CAEC", "#F8CBAD", "#379478" )
   
   blue <- "#2c3e50"
   green <- "#18BC9C"

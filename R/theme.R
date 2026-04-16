@@ -19,16 +19,18 @@ theme_outlier <- function (base_size = 11, base_family = "Microsoft Sans Serif")
       line = ggplot2::element_line(colour = blue, linewidth = 1, linetype = 1, lineend = "butt"), 
       rect = ggplot2::element_rect(fill = white, colour = blue, linewidth = 0.5, linetype = 1), 
       text = ggplot2::element_text(size = 15),
-
       axis.line = ggplot2::element_blank(), 
       axis.text = ggplot2::element_text(size = ggplot2::rel(0.8)), 
-      axis.ticks = ggplot2::element_line(color = grey, size = ggplot2::rel(1/3)), 
+      # --- CHANGE 1: size -> linewidth ---
+      axis.ticks = ggplot2::element_line(color = grey, linewidth = ggplot2::rel(1/3)), 
       axis.title = ggplot2::element_text(size = ggplot2::rel(0.8)), 
       
       panel.background = ggplot2::element_rect(fill = white, color = NA), 
-      panel.border = ggplot2::element_rect(fill = NA, size = ggplot2::rel(1/2), color = blue), 
-      panel.grid.major = ggplot2::element_line(color = grey, size = ggplot2::rel(1/3)), 
-      panel.grid.minor = ggplot2::element_line(color = grey, size = ggplot2::rel(1/3)), 
+      # --- CHANGE 2: size -> linewidth ---
+      panel.border = ggplot2::element_rect(fill = NA, linewidth = ggplot2::rel(1/2), color = blue), 
+      panel.grid.major = ggplot2::element_line(color = grey, linewidth = ggplot2::rel(1/3)), 
+      # --- CHANGE 3: size -> linewidth ---
+      panel.grid.minor = ggplot2::element_line(color = grey, linewidth = ggplot2::rel(1/3)), 
       panel.grid.minor.x = ggplot2::element_blank(), 
       panel.spacing = ggplot2::unit(0.75, "cm"), 
       
@@ -49,3 +51,4 @@ theme_outlier <- function (base_size = 11, base_family = "Microsoft Sans Serif")
       complete = FALSE,
     )
 }
+
